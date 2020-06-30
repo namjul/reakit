@@ -164,11 +164,11 @@ export const useDialog = createHook<DialogOptions, DialogHTMLProps>({
     const wrapElement = React.useCallback(
       (element: React.ReactNode) => {
         element = wrap(element);
-        if (options.modal && !hasBackdrop) {
-          element = <Portal>{element}</Portal>;
-        }
         if (htmlWrapElement) {
           element = htmlWrapElement(element);
+        }
+        if (options.modal && !hasBackdrop) {
+          element = <Portal>{element}</Portal>;
         }
         return (
           // Prevents Menu > Dialog > Menu to behave as a sub menu
